@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    //funcion estatica para activar o desactivar el movimiento del player.
     public static void SetPlayerDriveState(bool b) {
         if (instance == null) return;
         instance.canDrive = b;
