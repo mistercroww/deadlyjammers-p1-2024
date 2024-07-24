@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         moveVect.y = gravity;
 
         if (canDrive) {
-            cc.Move(speed * Time.deltaTime * moveVect.normalized);
+            cc.Move(speed * Time.deltaTime * Vector3.ClampMagnitude(moveVect, 1f));
             if (mouseRotation != Vector2.zero) {
                 t.Rotate(mouseRotation.x * rotationSpeed * Vector3.up);
                 cameraRotator.localRotation = Quaternion.Euler(Vector3.right * mouseRotation.y);
