@@ -11,12 +11,18 @@ public class PlayerMovement : MonoBehaviour
     public float rotationSpeed = 1f;
     public Transform cameraRotator;
     public Vector2 yawAngleRange = new(-75f,60f);
+    public AudioSource stepsAudio;
+    public AudioClip[] stepClips;
+    public float stepTime = 0.66f;
+    public float stepVolume = 0.33f;
+    float curStepTime;
 
     Vector2 curMovementVect, mouseRotation;
     Transform t;
     private void Awake() {
         instance = this;
         t = this.transform;
+        curStepTime = stepTime / 2f;
     }
     private void Update() {
         if (cc == null) return;
@@ -31,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         moveVect.y = gravity;
 
         if (canDrive) {
+            FootstepsHandler();
             cc.Move(speed * Time.deltaTime * Vector3.ClampMagnitude(moveVect, 1f));
             if (mouseRotation != Vector2.zero) {
                 t.Rotate(mouseRotation.x * rotationSpeed * Vector3.up);
@@ -42,5 +49,17 @@ public class PlayerMovement : MonoBehaviour
     public static void SetPlayerDriveState(bool b) {
         if (instance == null) return;
         instance.canDrive = b;
+    }
+    private void FootstepsHandler() {
+        if (curMovementVect != Vector2.zero) {
+            curStepTime += Time.deltaTime;
+            if(curStepTime > stepTime) {
+                curStepTime = 0;
+                stepsAudio.PlayOneShot(stepClips[Random.Range(0, stepClips.Length)], stepVolume);
+            }
+        }
+        else {
+            curStepTime = stepTime/2f;
+        }
     }
 }
