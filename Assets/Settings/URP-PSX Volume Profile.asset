@@ -119,10 +119,10 @@ MonoBehaviour:
     m_Value: 0
   ditherThreshold:
     m_OverrideState: 1
-    m_Value: 4.64
+    m_Value: 5.61
   ditherStrength:
     m_OverrideState: 0
-    m_Value: 1.37
+    m_Value: 0.2
   ditherScale:
     m_OverrideState: 1
     m_Value: 4.67
