@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &315411193554365218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4964010670463913192}
+  m_Layer: 6
+  m_Name: HAND_CONTAINER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4964010670463913192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315411193554365218}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.11716327, w: 0.99311274}
+  m_LocalPosition: {x: 0.389, y: -0.307, z: 0.656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 350143352372960535}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -13.457}
 --- !u!1 &2116786928363039076
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4580548717024398258}
   - component: {fileID: 3423443872265712320}
+  - component: {fileID: 8867974477372718167}
   - component: {fileID: 9097583949067061703}
   m_Layer: 6
   m_Name: _PLAYER
@@ -196,6 +228,21 @@ CharacterController:
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8867974477372718167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707532126755325462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2759bb83fb312042a78c04521031a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 9097583949067061703}
+  handTransform: {fileID: 4964010670463913192}
+  currentItemInHand: {fileID: 0}
 --- !u!114 &9097583949067061703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,5 +550,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 679881639287199648}
+  - {fileID: 4964010670463913192}
   m_Father: {fileID: 4580548717024398258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

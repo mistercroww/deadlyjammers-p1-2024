@@ -13,3 +13,7 @@ public static class ExtensionMethods {
         t.SetPositionAndRotation(target.position, target.rotation);
     }
 }
+public interface IInteractable {
+    public bool IsInteractable();
+    public void TriggerInteraction();
+}
