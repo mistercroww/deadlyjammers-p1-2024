@@ -34,11 +34,30 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    public void ClearCurrentItem(bool dropItem) {
+        if (currentItemInHand && dropItem) {
+            Vector3 spawnPos = transform.position + (transform.forward.normalized * 0.5f);
+            Instantiate(currentItemInHand.itemSO.itemPrefab, spawnPos, Quaternion.identity);
+        }
+        if(handTransform.childCount > 0) {
+            for (int i = 0; i < handTransform.childCount; i++) {
+                Destroy(handTransform.GetChild(i).gameObject);
+            }
+        }
+        currentItemInHand = null;
+    }
     public void PickupItem(ItemSO newItem) {
         //var tItem = Instantiate(newItem.itemPrefab, handTransform);
         currentItemInHand = Instantiate(newItem.itemPrefab, handTransform).GetComponent<Item>();
         currentItemInHand.transform.localPosition = Vector3.zero;
         currentItemInHand.transform.localEulerAngles = Vector3.zero;
         currentItemInHand.SetCollisionState(false);
+    }
+    public static ItemSO GetCurrentItemSO() {
+        if (instance == null) return null;
+        if (instance.currentItemInHand) {
+            return instance.currentItemInHand.itemSO;
+        }
+        return null;
     }
 }
