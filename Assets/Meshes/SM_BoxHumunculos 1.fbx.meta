@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: d4d7503de4098094a87bbf08d74ffb75
+<<<<<<<< HEAD:Assets/Meshes/SM_Door.fbx.meta
+guid: 7db359d459e889d40831db71a73ae4ce
+========
+guid: 67958f8ac242aa84298e76291ba3513e
+>>>>>>>> sungref:Assets/Meshes/SM_BoxHumunculos 1.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
