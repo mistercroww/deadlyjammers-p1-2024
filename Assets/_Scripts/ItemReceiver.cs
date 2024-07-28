@@ -15,7 +15,7 @@ public class ItemReceiver : MonoBehaviour, IInteractable {
     public void TriggerInteraction() {
         if (!isInteractable) return;
         var playerItem = PlayerController.GetCurrentItemSO();
-        if (playerItem != null && playerItem == itemToReceiveSO && OnCorrectItemReceived != null) {
+        if (playerItem != null && playerItem.itemID == itemToReceiveSO.itemID && OnCorrectItemReceived != null) {
             OnCorrectItemReceived.Invoke();
             if (removeItemFromPlayerWhenUsed) {
                 PlayerController.instance.ClearCurrentItem(false);
