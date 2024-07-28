@@ -9,6 +9,9 @@ public class ItemReceiver : MonoBehaviour, IInteractable {
     public bool removeItemFromPlayerWhenUsed = true;
     public UnityEvent OnCorrectItemReceived;
 
+    public InteractableType InteractionType() {
+        return InteractableType.ItemReceiver;
+    }
     public bool IsInteractable() {
         return isInteractable;
     }

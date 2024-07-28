@@ -43,4 +43,7 @@ public class SwitchLights : MonoBehaviour, IInteractable
     public void ToggleEnergy()
     {
     }
+    public InteractableType InteractionType() {
+        return InteractableType.Switch;
+    }
 }

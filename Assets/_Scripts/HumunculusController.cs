@@ -128,11 +128,10 @@ public class HumunculusController : MonoBehaviour
             _deadDecreaseRateCounter -= Time.deltaTime;
             if (_deadDecreaseRateCounter < 0)
             {
-                // startDeadEvent.Invoke();
-                
+                if (startDeadEvent != null) {
+                    startDeadEvent.Invoke();
+                }
                 print("has muerto pelotudo boludo papafrita");
-                
-                // _deadDecreaseRateCounter = deadDecreaseTimeCounter;
             }
         }
         else

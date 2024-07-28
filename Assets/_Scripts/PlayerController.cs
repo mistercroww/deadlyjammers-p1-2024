@@ -18,15 +18,19 @@ public class PlayerController : MonoBehaviour
     }
 
     private void InteractionCheck() {
-        if (Input.GetKeyDown(KeyCode.E)) {
-            int lm = 1 << 6;
-            lm = ~lm;
-            if (Physics.SphereCast(
-                Camera.main.transform.position, 0.1f, Camera.main.transform.forward, out RaycastHit hit, 1.5f, lm)) {
-                if (hit.collider.CompareTag("Interactable")) {
-                    IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-                    if (interactable != null) {
-                        if (interactable.IsInteractable()) {
+        int lm = 1 << 6;
+        lm = ~lm;
+
+        UI_Manager.instance.SetInteractionTextState(false);
+
+        if (Physics.SphereCast(
+            Camera.main.transform.position, 0.1f, Camera.main.transform.forward, out RaycastHit hit, 1.5f, lm)) {
+            if (hit.collider.CompareTag("Interactable")) {
+                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+                if (interactable != null) {
+                    if (interactable.IsInteractable()) {
+                        UI_Manager.instance.SetInteractionTextState(true, interactable.InteractionType());
+                        if (Input.GetKeyDown(KeyCode.E)) {
                             interactable.TriggerInteraction();
                         }
                     }
