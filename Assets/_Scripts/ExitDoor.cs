@@ -7,7 +7,9 @@ public class ExitDoor : MonoBehaviour, IInteractable {
     public bool IsInteractable() {
         return isDoorEnabled;
     }
-
+    public InteractableType InteractionType() {
+        return InteractableType.Door;
+    }
     public void TriggerInteraction() {
         if (!isDoorEnabled) return;
         LoadNextLevel();

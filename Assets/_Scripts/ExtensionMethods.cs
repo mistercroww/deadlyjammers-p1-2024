@@ -29,9 +29,12 @@ public static class ExtensionMethods
         return ((value - substract) < min) ? value = min : value - substract;
     }
 }
-
+public enum InteractableType {
+    Default, Item, ItemReceiver, Switch, Door
+}
 public interface IInteractable
 {
     public bool IsInteractable();
     public void TriggerInteraction();
+    public InteractableType InteractionType();
 }

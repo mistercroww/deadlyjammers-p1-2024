@@ -30,4 +30,7 @@ public class SwitchLights : MonoBehaviour, IInteractable
     {
         
     }
+    public InteractableType InteractionType() {
+        return InteractableType.Switch;
+    }
 }
