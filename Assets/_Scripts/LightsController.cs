@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LightsController : MonoBehaviour
+{
+    public GameObject on;
+    public GameObject off;
+    public bool IsOn = true;
+
+    public void SwitchLights()
+    {
+        IsOn = !IsOn;
+        on.SetActive(IsOn);
+        off.SetActive(!IsOn);
+    }
+}
