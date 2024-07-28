@@ -11,22 +11,24 @@ public class UI_Manager : MonoBehaviour
         instance = this;
     }
     public void SetInteractionTextState(bool b, InteractableType interactType = InteractableType.Default) {
-        switch (interactType) {
-            case InteractableType.Default:
-                interactionText.text = "[E] Interact";
-                break;
-            case InteractableType.Item:
-                interactionText.text = "[E] Pick up";
-                break;
-            case InteractableType.ItemReceiver:
-                interactionText.text = "[E] Use Item";
-                break;
-            case InteractableType.Switch:
-                interactionText.text = "[E] Switch";
-                break;
-            case InteractableType.Door:
-                interactionText.text = "[E] Open/Close";
-                break;
+        if (b) {
+            switch (interactType) {
+                case InteractableType.Default:
+                    interactionText.text = "[E] Interact";
+                    break;
+                case InteractableType.Item:
+                    interactionText.text = "[E] Pick up";
+                    break;
+                case InteractableType.ItemReceiver:
+                    interactionText.text = "[E] Use Item";
+                    break;
+                case InteractableType.Switch:
+                    interactionText.text = "[E] Switch";
+                    break;
+                case InteractableType.Door:
+                    interactionText.text = "[E] Open/Close";
+                    break;
+            }
         }
         interactionText.gameObject.SetActive(b);
     }
