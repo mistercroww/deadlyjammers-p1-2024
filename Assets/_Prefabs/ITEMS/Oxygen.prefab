@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4861301462129268952}
   - component: {fileID: 2979791474745256189}
   m_Layer: 0
-  m_Name: Toy
+  m_Name: Oxygen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

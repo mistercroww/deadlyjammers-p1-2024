@@ -1,8 +1,16 @@
+using System;
 using UnityEngine;
 
 public class SwitchLights : MonoBehaviour, IInteractable
 {
     public LightsController[] lightsControllers;
+
+    private GameManager _gameManager;
+
+    private void Start()
+    {
+        _gameManager = GetComponent<GameManager>();
+    }
 
     public bool IsInteractable()
     {
@@ -15,5 +23,11 @@ public class SwitchLights : MonoBehaviour, IInteractable
         {
             lightsControllers[i].SwitchLights();
         }
+    }
+
+
+    public void ToggleEnergy()
+    {
+        
     }
 }

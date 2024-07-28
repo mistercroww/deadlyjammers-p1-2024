@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc363a3e289bc8f4e94ac784be5a3435, type: 3}
-  m_Name: TOY
+  m_Name: OXYGEN
   m_EditorClassIdentifier: 
-  itemID: toy
-  itemName: Toy
+  itemID: oxygen
+  itemName: Oxygen
   itemValue: 10
   itemDescription: 
   itemPrefab: {fileID: 1338150804952623233, guid: b579e430ff4534347922c9c4c8db2095,

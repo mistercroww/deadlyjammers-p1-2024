@@ -149,16 +149,20 @@ MonoBehaviour:
   hungerIndicator: 0
   hungerDecressAmount: 10.1
   hungerDecreaseTimeCounter: 1.32
-  funIndicator: 0
-  funDecressAmount: 10.1
-  funDecreaseTimeCounter: 0.5
-  cleaningIndicator: 0
-  cleaningDecressAmount: 0.2
-  cleaningDecreaseTimeCounter: 0.5
+  oxygenIndicator: 0
+  oxygenDecressAmount: 0.2
+  oxygenDecreaseTimeCounter: 0.5
   IsKillMode: 0
+  deadDecreaseTimeCounter: 20
+  _deadDecreaseRateCounter: 0.1
+  startDeadEvent:
+    m_PersistentCalls:
+      m_Calls: []
   hungerNeedle: {fileID: 1309939711}
-  funNeedle: {fileID: 974245025}
+  oxygenNeedle: {fileID: 974245025}
   cleaningNeedle: {fileID: 0}
+  greenScreen: {fileID: 1140778458}
+  redScreen: {fileID: 807973699}
 --- !u!4 &28622728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0988246b7d372f14ab298dff5fdc2473,
@@ -1859,6 +1863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f99d12f5cdef04fa860371556035cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energyOn: 1
 --- !u!4 &359390737
 Transform:
   m_ObjectHideFlags: 0
@@ -5394,7 +5399,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
       propertyPath: m_Name
-      value: SM_PC_1_Screen (1)
+      value: SM_PC_1_Screen_Red
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
@@ -5406,6 +5411,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c2a40436387ad4593953d7e79649c9, type: 3}
+--- !u!1 &807973699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 60c2a40436387ad4593953d7e79649c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 807973698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &829179648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6150,7 +6161,7 @@ Transform:
   m_GameObject: {fileID: 894645234}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.115}
+  m_LocalPosition: {x: 0.003, y: 0, z: -0.114}
   m_LocalScale: {x: 0.11612, y: 0.5264068, z: 0.11612}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7054,7 +7065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1034243885}
   m_Layer: 0
-  m_Name: FunNeedle
+  m_Name: OxygenNeedle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7939,7 +7950,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
       propertyPath: m_Name
-      value: SM_PC_1_Screen
+      value: SM_PC_1_Screen_Green
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
@@ -7951,6 +7962,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c2a40436387ad4593953d7e79649c9, type: 3}
+--- !u!1 &1140778458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 60c2a40436387ad4593953d7e79649c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1140778457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1159025847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7309736a5165d94ea31cf5c29b63b53,
