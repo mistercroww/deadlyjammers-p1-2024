@@ -128,41 +128,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1289550411}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &21840778 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b30de90cccc7a242b2a9eeca795e1f5,
+--- !u!4 &21840781 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b30de90cccc7a242b2a9eeca795e1f5,
     type: 3}
   m_PrefabInstance: {fileID: 1695706523}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &21840780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21840778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8c2c36816a5dd54ca604f056ddfc481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hungerIndicator: 0
-  hungerDecressAmount: 10.1
-  hungerDecreaseTimeCounter: 1.32
-  oxygenIndicator: 0
-  oxygenDecressAmount: 0.2
-  oxygenDecreaseTimeCounter: 0.5
-  IsKillMode: 0
-  deadDecreaseTimeCounter: 20
-  _deadDecreaseRateCounter: 0.1
-  startDeadEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  hungerNeedle: {fileID: 1309939711}
-  oxygenNeedle: {fileID: 974245025}
-  cleaningNeedle: {fileID: 0}
-  greenScreen: {fileID: 1140778458}
-  redScreen: {fileID: 807973699}
 --- !u!4 &28622728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0988246b7d372f14ab298dff5fdc2473,
@@ -1432,6 +1403,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292209298}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &316144559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 316144560}
+  m_Layer: 0
+  m_Name: SCREEN
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &316144560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316144559}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1140778461}
+  - {fileID: 807973702}
+  m_Father: {fileID: 883253234}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &324015495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0988246b7d372f14ab298dff5fdc2473,
@@ -3354,6 +3358,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518112958}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &528869885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 528869886}
+  m_Layer: 0
+  m_Name: AVATARS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &528869886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528869885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 21840781}
+  m_Father: {fileID: 883253234}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &538884125
 GameObject:
   m_ObjectHideFlags: 0
@@ -5339,7 +5375,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 316144560}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
@@ -5349,7 +5385,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.204
+      value: 1.216
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
@@ -5404,7 +5440,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5414,6 +5450,12 @@ PrefabInstance:
 --- !u!1 &807973699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 60c2a40436387ad4593953d7e79649c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 807973698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &807973702 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60c2a40436387ad4593953d7e79649c9,
     type: 3}
   m_PrefabInstance: {fileID: 807973698}
   m_PrefabAsset: {fileID: 0}
@@ -5824,6 +5866,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864076710}
   m_CullTransparentMesh: 1
+--- !u!1 &883253233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883253234}
+  m_Layer: 0
+  m_Name: HOMUNCULOS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &883253234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883253233}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 972170354}
+  - {fileID: 528869886}
+  - {fileID: 316144560}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &886109551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6641,6 +6717,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949905389}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &972170353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 972170354}
+  - component: {fileID: 972170355}
+  m_Layer: 0
+  m_Name: _HOMUNCULO_CONTROLLER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &972170354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972170353}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 883253234}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &972170355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972170353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c2c36816a5dd54ca604f056ddfc481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerIndicator: 0
+  hungerDecressAmount: 10.1
+  hungerDecreaseTimeCounter: 1.32
+  oxygenIndicator: 0
+  oxygenDecressAmount: 0.2
+  oxygenDecreaseTimeCounter: 0.5
+  IsKillMode: 0
+  deadDecreaseTimeCounter: 20
+  _deadDecreaseRateCounter: 0.1
+  startDeadEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hungerNeedle: {fileID: 1309939711}
+  oxygenNeedle: {fileID: 974245025}
+  cleaningNeedle: {fileID: 0}
+  greenScreen: {fileID: 1140778458}
+  redScreen: {fileID: 807973699}
 --- !u!1001 &972945457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6957,7 +7094,7 @@ MonoBehaviour:
   OnCorrectItemReceived:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 21840780}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HumunculusController, Assembly-CSharp
         m_MethodName: FillFun
         m_Mode: 4
@@ -7890,7 +8027,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 316144560}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
@@ -7900,7 +8037,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.204
+      value: 1.216
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 60c2a40436387ad4593953d7e79649c9,
         type: 3}
@@ -7965,6 +8102,12 @@ PrefabInstance:
 --- !u!1 &1140778458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 60c2a40436387ad4593953d7e79649c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1140778457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1140778461 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60c2a40436387ad4593953d7e79649c9,
     type: 3}
   m_PrefabInstance: {fileID: 1140778457}
   m_PrefabAsset: {fileID: 0}
@@ -11658,7 +11801,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 528869886}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1b30de90cccc7a242b2a9eeca795e1f5,
         type: 3}
@@ -11683,17 +11826,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1b30de90cccc7a242b2a9eeca795e1f5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b30de90cccc7a242b2a9eeca795e1f5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b30de90cccc7a242b2a9eeca795e1f5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b30de90cccc7a242b2a9eeca795e1f5,
         type: 3}
@@ -11718,11 +11861,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b30de90cccc7a242b2a9eeca795e1f5,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 21840780}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b30de90cccc7a242b2a9eeca795e1f5, type: 3}
 --- !u!1001 &1701897241
 PrefabInstance:
@@ -13082,7 +13221,7 @@ MonoBehaviour:
   OnCorrectItemReceived:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 21840780}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HumunculusController, Assembly-CSharp
         m_MethodName: FillHunger
         m_Mode: 4
@@ -15453,6 +15592,7 @@ SceneRoots:
   - {fileID: 1199359766}
   - {fileID: 794767271}
   - {fileID: 512844510}
+  - {fileID: 883253234}
   - {fileID: 359390737}
   - {fileID: 1097465141}
   - {fileID: 2000465675}
@@ -15477,12 +15617,9 @@ SceneRoots:
   - {fileID: 103733195}
   - {fileID: 404575496}
   - {fileID: 782573386}
-  - {fileID: 1695706523}
   - {fileID: 1375111761}
   - {fileID: 860155916}
   - {fileID: 886109551}
-  - {fileID: 1140778457}
-  - {fileID: 807973698}
   - {fileID: 1701897241}
   - {fileID: 358733991}
   - {fileID: 1414412604}
