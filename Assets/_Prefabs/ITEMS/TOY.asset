@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc363a3e289bc8f4e94ac784be5a3435, type: 3}
-  m_Name: FOOD
+  m_Name: TOY
   m_EditorClassIdentifier: 
-  itemID: food
-  itemName: Food
-  itemValue: 100
-  itemDescription: Food for the creature
-  itemPrefab: {fileID: 6110217928601560723, guid: 6342829310978234d833107cf4dd8d87,
+  itemID: toy
+  itemName: Toy
+  itemValue: 10
+  itemDescription: 
+  itemPrefab: {fileID: 1338150804952623233, guid: b579e430ff4534347922c9c4c8db2095,
     type: 3}
