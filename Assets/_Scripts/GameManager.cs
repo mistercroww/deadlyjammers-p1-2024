@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public bool energyOn = true;
 
     public int currentDay = 1;
-    public int maxGameDay = 4;
+    public int maxGameDay = ExtensionMethods.MaxDays;
 
     public GameObject _player;
 
@@ -43,12 +43,14 @@ public class GameManager : MonoBehaviour
     {
         currentDay = (int)ExtensionMethods.AddToValueWithMax(currentDay, 1, maxGameDay);
         _dayDecreaseRateCounter = dayDecreaseTimeCounter;
-        if (currentDay == maxGameDay)
+        if (currentDay == maxGameDay && endGameEvent != null)
         {
-            if (endGameEvent != null)
-            {
-                endGameEvent.Invoke();
-            }
+            endGameEvent.Invoke();
+        }
+
+        if (changeDayEvent != null)
+        {
+            changeDayEvent.Invoke();
         }
     }
 

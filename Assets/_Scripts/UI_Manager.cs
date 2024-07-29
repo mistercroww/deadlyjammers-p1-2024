@@ -27,6 +27,9 @@ public class UI_Manager : MonoBehaviour
             case InteractableType.Door:
                 interactionText.text = "[E] Open/Close";
                 break;
+            case InteractableType.Radio:
+                interactionText.text = "[E] On/Off";
+                break;
         }
         interactionText.gameObject.SetActive(b);
     }
