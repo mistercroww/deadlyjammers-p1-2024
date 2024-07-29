@@ -18,16 +18,17 @@ public class HumunculusController : MonoBehaviour
     private float _oxygenDecreaseRateCounter;
 
     // public float MadnessIndicator;
-    public bool IsKillMode = false;
+    public bool isKillMode = false;
     public float deadDecreaseTimeCounter = 1f;
     public float _deadDecreaseRateCounter = 0.1f;
     public UnityEvent startDeadEvent;
+    public bool isDead = false;
 
     // Needles
     public Transform hungerNeedle;
     public Transform oxygenNeedle;
     public Transform cleaningNeedle;
-    private float rangeRotation = 60f;
+    private float rangeRotation = 80f;
 
 
     public GameObject greenScreen;
@@ -48,7 +49,7 @@ public class HumunculusController : MonoBehaviour
         IncreaseOxygen();
 
         StatsListener();
-        
+
         DeadCountdown();
     }
 
@@ -56,7 +57,7 @@ public class HumunculusController : MonoBehaviour
     {
         needle.localRotation = Quaternion.Euler(Vector3.forward *
                                                 ExtensionMethods.Remap(Indicator, 0, 100,
-                                                    -rangeRotation, rangeRotation));
+                                                    rangeRotation, -rangeRotation));
     }
 
     private void IncreaseHunger()
@@ -73,8 +74,6 @@ public class HumunculusController : MonoBehaviour
             setNeedleRotation(hungerNeedle, hungerIndicator);
             _hungerDecreaseRateCounter = hungerDecreaseTimeCounter;
         }
-
-        // RectifyValue();
     }
 
     private void IncreaseOxygen()
@@ -109,29 +108,32 @@ public class HumunculusController : MonoBehaviour
     {
         if ((hungerIndicator >= 100) || (oxygenIndicator >= 100))
         {
-            IsKillMode = true;
-            greenScreen.SetActive(!IsKillMode);
-            redScreen.SetActive(IsKillMode);
+            isKillMode = true;
+            greenScreen.SetActive(!isKillMode);
+            redScreen.SetActive(isKillMode);
         }
         else
         {
-            IsKillMode = false;
-            greenScreen.SetActive(!IsKillMode);
-            redScreen.SetActive(IsKillMode);
+            isKillMode = false;
+            greenScreen.SetActive(!isKillMode);
+            redScreen.SetActive(isKillMode);
         }
     }
 
     public void DeadCountdown()
     {
-        if (IsKillMode)
+        if (isKillMode && !isDead)
         {
             _deadDecreaseRateCounter -= Time.deltaTime;
             if (_deadDecreaseRateCounter < 0)
             {
-                if (startDeadEvent != null) {
+                if (startDeadEvent != null)
+                {
                     startDeadEvent.Invoke();
                 }
+
                 print("has muerto pelotudo boludo papafrita");
+                isDead = true;
             }
         }
         else
