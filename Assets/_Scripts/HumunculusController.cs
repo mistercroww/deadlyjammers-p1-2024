@@ -5,6 +5,8 @@ using UnityEngine.Serialization;
 
 public class HumunculusController : MonoBehaviour
 {
+    public GameManager _gameManager;
+    
     // Hunger Indicator
     [Range(0f, 100f)] public float hungerIndicator;
     public float hungerDecressAmount = 0.2f;
@@ -17,9 +19,22 @@ public class HumunculusController : MonoBehaviour
     public float oxygenDecreaseTimeCounter = 0.5f;
     private float _oxygenDecreaseRateCounter;
 
+    // Argon Indicator
+    [Range(0f, 100f)] public float argonIndicator;
+    public float argonDecressAmount = 0.2f;
+    public float argonDecreaseTimeCounter = 0.5f;
+    private float _argonDecreaseRateCounter;
+
+    // Nitrogen Indicator
+    [Range(0f, 100f)] public float nitrogenIndicator;
+    public float nitrogenDecressAmount = 0.2f;
+    public float nitrogenDecreaseTimeCounter = 0.5f;
+    private float _nitrogenDecreaseRateCounter;
+
+
     // public float MadnessIndicator;
     public bool isKillMode = false;
-    public float deadDecreaseTimeCounter = 1f;
+    public float deadDecreaseTimeCounter = 20f;
     public float _deadDecreaseRateCounter = 0.1f;
     public UnityEvent startDeadEvent;
     public bool isDead = false;
@@ -27,7 +42,8 @@ public class HumunculusController : MonoBehaviour
     // Needles
     public Transform hungerNeedle;
     public Transform oxygenNeedle;
-    public Transform cleaningNeedle;
+    public Transform argonNeedle;
+    public Transform nitrogenNeedle;
     private float rangeRotation = 80f;
 
 
@@ -39,14 +55,20 @@ public class HumunculusController : MonoBehaviour
     {
         _hungerDecreaseRateCounter = hungerDecreaseTimeCounter;
         _oxygenDecreaseRateCounter = oxygenDecreaseTimeCounter;
+        _argonDecreaseRateCounter = argonDecreaseTimeCounter;
+        _nitrogenDecreaseRateCounter = nitrogenDecreaseTimeCounter;
+
+
         _deadDecreaseRateCounter = deadDecreaseTimeCounter;
     }
 
     // Update is called once per frame
     void Update()
     {
-        IncreaseHunger();
+        // IncreaseHunger();
         IncreaseOxygen();
+        IncreaseArgon();
+        IncreaseNitrogen();
 
         StatsListener();
 
@@ -78,6 +100,7 @@ public class HumunculusController : MonoBehaviour
 
     private void IncreaseOxygen()
     {
+        oxygenDecressAmount = ExtensionMethods.NeedsMultiplier[_gameManager.currentDay - 1];
         _oxygenDecreaseRateCounter -= Time.deltaTime;
 
         if (_oxygenDecreaseRateCounter < 0)
@@ -92,21 +115,66 @@ public class HumunculusController : MonoBehaviour
         }
     }
 
+    private void IncreaseArgon()
+    {
+        _argonDecreaseRateCounter -= Time.deltaTime;
+
+        if (_argonDecreaseRateCounter < 0)
+        {
+            if ((argonIndicator - argonDecressAmount) < 100)
+            {
+                argonIndicator = ExtensionMethods.AddToValueWithMax(argonIndicator, argonDecressAmount, 100);
+            }
+
+            setNeedleRotation(argonNeedle, argonIndicator);
+            _argonDecreaseRateCounter = argonDecreaseTimeCounter;
+        }
+    }
+
+    private void IncreaseNitrogen()
+    {
+        _nitrogenDecreaseRateCounter -= Time.deltaTime;
+
+        if (_nitrogenDecreaseRateCounter < 0)
+        {
+            if ((nitrogenIndicator - nitrogenDecressAmount) < 100)
+            {
+                nitrogenIndicator = ExtensionMethods.AddToValueWithMax(nitrogenIndicator, nitrogenDecressAmount, 100);
+            }
+
+            setNeedleRotation(nitrogenNeedle, nitrogenIndicator);
+            _nitrogenDecreaseRateCounter = nitrogenDecreaseTimeCounter;
+        }
+    }
+
     public void FillHunger(float foodIncome)
     {
         hungerIndicator = ExtensionMethods.SubtractToValueWithMin(hungerIndicator, foodIncome, 0);
         setNeedleRotation(hungerNeedle, hungerIndicator);
     }
 
-    public void FillFun(float funIncome)
+    public void FillOxygen(float funIncome)
     {
         oxygenIndicator = ExtensionMethods.SubtractToValueWithMin(oxygenIndicator, funIncome, 0);
-        setNeedleRotation(hungerNeedle, hungerIndicator);
+        setNeedleRotation(oxygenNeedle, oxygenIndicator);
+    }
+
+    public void FillArgon(float funIncome)
+    {
+        argonIndicator = ExtensionMethods.SubtractToValueWithMin(argonIndicator, funIncome, 0);
+        setNeedleRotation(argonNeedle, argonIndicator);
+    }
+
+    public void FillNitrogen(float funIncome)
+    {
+        nitrogenIndicator = ExtensionMethods.SubtractToValueWithMin(nitrogenIndicator, funIncome, 0);
+        setNeedleRotation(nitrogenNeedle, nitrogenIndicator);
     }
 
     private void StatsListener()
     {
-        if ((hungerIndicator >= 100) || (oxygenIndicator >= 100))
+        if ((hungerIndicator >= 100) || (oxygenIndicator >= 100) || (argonIndicator >= 100) ||
+            (nitrogenIndicator >= 100))
         {
             isKillMode = true;
             greenScreen.SetActive(!isKillMode);
