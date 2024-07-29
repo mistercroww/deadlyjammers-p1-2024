@@ -4,6 +4,7 @@ using UnityEngine;
 public class SwitchLights : MonoBehaviour, IInteractable
 {
     public LightsController[] lightsControllers;
+    public GameObject switchInterruptor;
 
     private GameManager _gameManager;
 
@@ -19,16 +20,28 @@ public class SwitchLights : MonoBehaviour, IInteractable
 
     public void TriggerInteraction()
     {
+        bool isOn = false;
         for (int i = 0; i < lightsControllers.Length; i++)
         {
-            lightsControllers[i].SwitchLights();
+            isOn = lightsControllers[i].SwitchLights();
+        }
+
+        if (switchInterruptor)
+        {
+            if (!isOn)
+            {
+                switchInterruptor.transform.localEulerAngles = Vector3.right * 60;
+            }
+            else
+            {
+                switchInterruptor.transform.localEulerAngles = -(Vector3.right * 60);
+            }
         }
     }
 
 
     public void ToggleEnergy()
     {
-        
     }
     public InteractableType InteractionType() {
         return InteractableType.Switch;

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc363a3e289bc8f4e94ac784be5a3435, type: 3}
-  m_Name: OXYGEN
+  m_Name: CHICKEN
   m_EditorClassIdentifier: 
-  itemID: oxygen
-  itemName: Oxygen
-  itemValue: 10
-  itemDescription: 
-  itemPrefab: {fileID: 291664212413829701, guid: 67731829f68b14f4db64606bf04c8840,
+  itemID: food
+  itemName: Food
+  itemValue: 100
+  itemDescription: Food for the creature
+  itemPrefab: {fileID: 5098966737089568062, guid: 6f640902f1a2bc14f87c3160025dbc53,
     type: 3}
