@@ -14,24 +14,31 @@ public class HumunculusController : MonoBehaviour
     public float hungerDecreaseTimeCounter = 0.5f;
     private float _hungerDecreaseRateCounter;
     public UnityEvent hungryEvent;
+    public UnityEvent fillHungerEvent;
 
     // Oxygen Indicator
     [Range(0f, 100f)] public float oxygenIndicator;
     public float oxygenDecressAmount = 0.2f;
     public float oxygenDecreaseTimeCounter = 0.5f;
     private float _oxygenDecreaseRateCounter;
-
+    public UnityEvent oxygenSFXEvent;
+    public UnityEvent fillOxygenEvent;
+    
     // Argon Indicator
     [Range(0f, 100f)] public float argonIndicator;
     public float argonDecressAmount = 0.2f;
     public float argonDecreaseTimeCounter = 0.5f;
     private float _argonDecreaseRateCounter;
+    public UnityEvent argonSFXEvent;
+    public UnityEvent fillArgonEvent;
 
     // Nitrogen Indicator
     [Range(0f, 100f)] public float nitrogenIndicator;
     public float nitrogenDecressAmount = 0.2f;
     public float nitrogenDecreaseTimeCounter = 0.5f;
     private float _nitrogenDecreaseRateCounter;
+    public UnityEvent nitrogenSFXEvent;
+    public UnityEvent fillNitrogenEvent;
 
     // Fun Indicator
     [Range(0f, 100f)] public float funIndicator;

@@ -1,12 +1,15 @@
+using System.Threading;
 using UnityEngine;
 
 public class RadioController : MonoBehaviour, IInteractable
 {
     public AudioSource mixAudio;
+    public AudioSource onOffAudio;
     public AudioClip[] mixes;
-    public float volume = 0.33f;
     public bool isOn = false;
     public GameManager _gameManager;
+    public AudioClip onSFX;
+    public AudioClip offSFX;
 
     public bool IsInteractable()
     {
@@ -15,6 +18,7 @@ public class RadioController : MonoBehaviour, IInteractable
 
     public void TriggerInteraction()
     {
+        OnOffRadio();
         SetTrack();
         mixAudio.loop = true;
         if (!isOn)
@@ -29,6 +33,12 @@ public class RadioController : MonoBehaviour, IInteractable
         }
 
         isOn = !isOn;
+    }
+
+    public void OnOffRadio()
+    {
+        onOffAudio.clip = isOn ? onSFX : offSFX;
+        onOffAudio.Play();
     }
 
     public InteractableType InteractionType()
