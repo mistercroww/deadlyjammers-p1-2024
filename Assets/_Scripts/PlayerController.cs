@@ -10,12 +10,19 @@ public class PlayerController : MonoBehaviour
     public Transform handTransform;
     public Item currentItemInHand;
     public float sanity = 100;
+    public Animator clipboardAnim;
 
     private void Awake() {
         instance = this;
     }
     private void Update() {
         InteractionCheck();
+        ClipboardAnimationHandler();
+    }
+
+    private void ClipboardAnimationHandler() {
+        if (clipboardAnim == null) return;
+        clipboardAnim.SetBool("Check", Input.GetMouseButton(1));
     }
 
     private void InteractionCheck() {
@@ -30,6 +37,9 @@ public class PlayerController : MonoBehaviour
                 IInteractable interactable = hit.collider.GetComponent<IInteractable>();
                 if (interactable != null) {
                     if (interactable.IsInteractable()) {
+                        if(interactable.InteractionType() == InteractableType.ItemReceiver && currentItemInHand == null) {
+                            return;
+                        }
                         UI_Manager.instance.SetInteractionTextState(true, interactable.InteractionType());
                         if (Input.GetKeyDown(KeyCode.E)) {
                             interactable.TriggerInteraction();

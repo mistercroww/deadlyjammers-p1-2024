@@ -8387,15 +8387,36 @@ MonoBehaviour:
   hungryEvent:
     m_PersistentCalls:
       m_Calls: []
+  fillHungerEvent:
+    m_PersistentCalls:
+      m_Calls: []
   oxygenIndicator: 0
   oxygenDecressAmount: 1
   oxygenDecreaseTimeCounter: 2
+  oxygenSFXEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  fillOxygenEvent:
+    m_PersistentCalls:
+      m_Calls: []
   argonIndicator: 0
   argonDecressAmount: 0.2
   argonDecreaseTimeCounter: 0.5
+  argonSFXEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  fillArgonEvent:
+    m_PersistentCalls:
+      m_Calls: []
   nitrogenIndicator: 0
   nitrogenDecressAmount: 0.2
   nitrogenDecreaseTimeCounter: 0.5
+  nitrogenSFXEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  fillNitrogenEvent:
+    m_PersistentCalls:
+      m_Calls: []
   funIndicator: 0
   funDecressAmount: 0.2
   funDecreaseTimeCounter: 0.5
@@ -19048,31 +19069,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 326760205555522894, guid: 5a862cf29318ce34da9f36fe48358d8b,
-        type: 3}
-      propertyPath: m_NoiseProfile
-      value: 
-      objectReference: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd,
-        type: 2}
-    - target: {fileID: 679881639287199648, guid: 5a862cf29318ce34da9f36fe48358d8b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.083
-      objectReference: {fileID: 0}
-    - target: {fileID: 679881639287199648, guid: 5a862cf29318ce34da9f36fe48358d8b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.069
-      objectReference: {fileID: 0}
     - target: {fileID: 2707532126755325462, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
       propertyPath: m_Name
       value: _PLAYER
-      objectReference: {fileID: 0}
-    - target: {fileID: 3884845189285703378, guid: 5a862cf29318ce34da9f36fe48358d8b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
@@ -19123,11 +19123,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9097583949067061703, guid: 5a862cf29318ce34da9f36fe48358d8b,
-        type: 3}
-      propertyPath: speed
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
