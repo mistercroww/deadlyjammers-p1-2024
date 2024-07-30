@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public PlayerMovement playerMovement;
     public Transform handTransform;
     public Item currentItemInHand;
+    public float sanity = 100;
 
     private void Awake() {
         instance = this;
@@ -63,5 +64,10 @@ public class PlayerController : MonoBehaviour
             return instance.currentItemInHand.itemSO;
         }
         return null;
+    }
+
+    public void LossSanity(float quantity)
+    {
+        sanity -= quantity;
     }
 }

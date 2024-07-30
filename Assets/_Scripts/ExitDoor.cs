@@ -1,20 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ExitDoor : MonoBehaviour, IInteractable {
+public class ExitDoor : MonoBehaviour, IInteractable
+{
     public bool isDoorEnabled = true;
-    public bool IsInteractable() {
+
+    public GameManager _gameManager;
+
+    public bool IsInteractable()
+    {
         return isDoorEnabled;
     }
-    public InteractableType InteractionType() {
+
+    public InteractableType InteractionType()
+    {
         return InteractableType.Door;
     }
-    public void TriggerInteraction() {
+
+    public void TriggerInteraction()
+    {
         if (!isDoorEnabled) return;
         LoadNextLevel();
     }
-    public void LoadNextLevel() {
-        print("PASASTE EL DIA MACACO");
+
+    public void LoadNextLevel()
+    {
+        _gameManager.NextGameDay();
+        print("PASASTE EL DIA MACACO, dia " + _gameManager.currentDay);
     }
 }
