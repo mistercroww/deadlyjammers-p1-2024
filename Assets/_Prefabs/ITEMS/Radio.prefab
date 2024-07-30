@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1374134053101623727}
   - component: {fileID: 3565631276726491198}
+  - component: {fileID: 5423379157900465977}
   m_Layer: 6
   m_Name: radioSound
   m_TagString: Untagged
@@ -86,9 +87,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0
   MinDistance: 3
-  MaxDistance: 8
+  MaxDistance: 32
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -96,22 +97,22 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.020324707
-      value: 0.9943161
-      inSlope: 0
-      outSlope: 0
+      time: 0
+      value: 0.997242
+      inSlope: -1.4968103
+      outSlope: -1.4968103
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.07317073
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -2
-      outSlope: -2
+      inSlope: -0.10804584
+      outSlope: -0.10804584
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.12757975
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -136,7 +137,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.27767944
+      value: 0.30801392
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -144,8 +145,8 @@ AudioSource:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.57895684
-      value: 0
+      time: 0.41571832
+      value: 0.046875
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -166,6 +167,40 @@ AudioSource:
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!169 &5423379157900465977
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140195791879215553}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.052532196
+      value: 0.99369884
+      inSlope: -0.49330986
+      outSlope: -0.49330986
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.10648065
+    - serializedVersion: 3
+      time: 0.65102804
+      value: 0.12253642
+      inSlope: -0.13382457
+      outSlope: -0.13382457
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17183362
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -275,10 +310,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixAudio: {fileID: 3565631276726491198}
+  onOffAudio: {fileID: 0}
   mixes:
   - {fileID: 8300000, guid: 65edb82f10c1d4746892393b602efd56, type: 3}
-  volume: 0.33
   isOn: 0
+  _gameManager: {fileID: 0}
+  onSFX: {fileID: 0}
+  offSFX: {fileID: 0}
 --- !u!65 &7639271266915979704
 BoxCollider:
   m_ObjectHideFlags: 0
