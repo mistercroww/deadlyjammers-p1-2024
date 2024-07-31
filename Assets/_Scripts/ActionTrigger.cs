@@ -16,4 +16,7 @@ public class ActionTrigger : MonoBehaviour
             triggered = true;
         }
     }
+    public void LoadNewScene(string newScene) {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(newScene);
+    }
 }

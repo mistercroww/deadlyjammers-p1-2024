@@ -18,7 +18,7 @@ public static class ExtensionMethods
 
     public static readonly int[] DayTracks = { 0, 0, 1, 1, 2, 2, 2, 2, 2, 2 };
 
-    public static readonly int[] HomunculusAvatar = { 0, 0, 1, 1, 2, 2, 2, 2, 2 };
+    public static readonly int[] HomunculusAvatar = { 0, 0, 1, 1, 2, 2, 3, 3, 3 };
 
 
     public static float Remap(this float value, float from1, float to1, float from2, float to2)
