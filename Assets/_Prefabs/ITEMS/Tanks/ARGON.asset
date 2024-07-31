@@ -18,3 +18,5 @@ MonoBehaviour:
   itemDescription: 
   itemPrefab: {fileID: 2526560747352037722, guid: 3225a6c45b2bc90459296eebae9f1eb4,
     type: 3}
+  inHandLocalPosition: {x: 0.25, y: -0.31, z: 0.02}
+  inHandLocalRotation: {x: 280.81998, y: 0.000018192117, z: 257.85995}
