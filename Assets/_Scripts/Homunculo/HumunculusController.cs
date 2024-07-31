@@ -463,7 +463,7 @@ public class HumunculusController : MonoBehaviour
                 homunculoAnimator3.SetBool("Low", true);
                 break;
             case 3:
-                homunculoAnimator4.SetBool("Low", true);
+                // homunculoAnimator4.SetBool("Low", true);
                 break;
         }
     }
@@ -479,7 +479,7 @@ public class HumunculusController : MonoBehaviour
                 homunculoAnimator3.SetBool("Low", false);
                 break;
             case 3:
-                homunculoAnimator4.SetBool("Low", false);
+                // homunculoAnimator4.SetBool("Low", false);
                 break;
         }
     }

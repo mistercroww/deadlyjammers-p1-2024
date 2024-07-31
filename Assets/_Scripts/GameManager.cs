@@ -1,10 +1,12 @@
-using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private PlayerMovement _playerMovement;
     public bool energyOn = true;
 
     public int currentDay = 0;
@@ -14,17 +16,20 @@ public class GameManager : MonoBehaviour
     public HumunculusController _humunculusController;
     public Transform _startPoint;
     public GameObject gameOverScreen;
-    
+
     // Day parameters
-    public float dayDecreaseTimeCounter = 300f;
-    public float _dayDecreaseRateCounter = 0.1f;
+    public float newDayDecreaseTimeCounter = 10f;
+    public float _newDayDecreaseRateCounter = 0.1f;
     public UnityEvent changeDayEvent;
     public UnityEvent endGameEvent;
+    public TMP_Text dayTxt;
+    public GameObject newDayCanvas;
+    public bool newDayInit = false;
 
     // Contador para salir del Canvas GameOver
-    [SerializeField]private float _gameOverDecreaseTimeCounter = 10f;
+    [SerializeField] private float _gameOverDecreaseTimeCounter = 10f;
     private bool _gameOver = false;
-
+    public GameObject _destroyLabTrigger;
     private void Awake()
     {
         Application.targetFrameRate = 24;
@@ -35,14 +40,15 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-        _dayDecreaseRateCounter = dayDecreaseTimeCounter;
+        _newDayDecreaseRateCounter = newDayDecreaseTimeCounter;
+        _playerMovement = FindObjectOfType<PlayerMovement>();
         maxGameDay = ExtensionMethods.MaxDays;
     }
 
     private void Update()
     {
-        // DayTimerCountdown();
-        
+        NewDayAnimation();
+
         if (Input.GetKeyDown(KeyCode.F3))
         {
             StartGameOver();
@@ -55,7 +61,7 @@ public class GameManager : MonoBehaviour
             {
                 if (Input.anyKey)
                 {
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+                    SceneManager.LoadScene("Gameplay");
                 }
             }
         }
@@ -64,28 +70,49 @@ public class GameManager : MonoBehaviour
     public void NextGameDay()
     {
         currentDay = (int)ExtensionMethods.AddToValueWithMax(currentDay, 1, maxGameDay);
-        _dayDecreaseRateCounter = dayDecreaseTimeCounter;
+        _newDayDecreaseRateCounter = newDayDecreaseTimeCounter;
         if (currentDay == maxGameDay && endGameEvent != null)
         {
             endGameEvent.Invoke();
+        }
+
+        if (ExtensionMethods.CurrentAvatar(currentDay) == 2 && currentDay == 6)
+        {
+            _destroyLabTrigger.SetActive(true);
+        }
+        else
+        {
+            _destroyLabTrigger.SetActive(false);
         }
 
         if (changeDayEvent != null)
         {
             changeDayEvent.Invoke();
         }
+
+        newDayInit = true;
+        _playerMovement.canDrive = false;
+        newDayCanvas.SetActive(true);
+        dayTxt.SetText(currentDay.ToString());
     }
 
-    public void DayTimerCountdown()
+    public void NewDayAnimation()
     {
-        _dayDecreaseRateCounter -= Time.deltaTime;
-        if (_dayDecreaseRateCounter < 0)
+        if (newDayInit)
         {
-            _humunculusController?.startDeadEvent?.Invoke();
+            _newDayDecreaseRateCounter -= Time.deltaTime;
 
-            NextGameDay();
-            print("Tiempo de dia finalizado, se forza el cambio de dia, dia nro " + currentDay);
-            _player.transform.position = _startPoint.position;
+            if (_newDayDecreaseRateCounter < (newDayDecreaseTimeCounter - 8))
+            {
+                _player.transform.SetPositionAndRotation(_startPoint.position, _startPoint.rotation);
+                _playerMovement.canDrive = true;    
+            }
+
+            if (_newDayDecreaseRateCounter < 0)
+            {
+                newDayCanvas.SetActive(false);
+                newDayInit = false;
+            }
         }
     }
 
@@ -104,5 +131,10 @@ public class GameManager : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
         _gameOver = true;
+    }
+
+    public void DisableTriggerArea()
+    {
+        _destroyLabTrigger.SetActive(false);
     }
 }

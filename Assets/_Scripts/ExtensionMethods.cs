@@ -2,23 +2,23 @@ using UnityEngine;
 
 public static class ExtensionMethods
 {
-    public static readonly float[] HungerMultiplier = { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f };
+    public static readonly float[] HungerMultiplier = { 1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f };
 
-    public static readonly float[] OxygenMultiplier = { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+    public static readonly float[] OxygenMultiplier = { 1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
 
-    public static readonly float[] ArgonMultiplier = { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+    public static readonly float[] ArgonMultiplier = { 1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
 
-    public static readonly float[] NitrogenMultiplier = { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+    public static readonly float[] NitrogenMultiplier = { 1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
 
     public static readonly float[] DirtyMultiplier = { 10f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
 
     public static readonly float[] RadioBuff = { .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f };
 
-    public static readonly int MaxDays = 10;
+    public static readonly int MaxDays = 9;
 
-    public static readonly int[] DayTracks = { 0, 0, 0, 1, 1, 1, 2, 2, 2, 2 };
+    public static readonly int[] DayTracks = { 0, 0, 1, 1, 2, 2, 2, 2, 2, 2 };
 
-    public static readonly int[] HomunculusAvatar = { 0, 0, 0, 1, 1, 1, 2, 2, 2, 2 };
+    public static readonly int[] HomunculusAvatar = { 0, 0, 1, 1, 2, 2, 2, 2, 2 };
 
 
     public static float Remap(this float value, float from1, float to1, float from2, float to2)
