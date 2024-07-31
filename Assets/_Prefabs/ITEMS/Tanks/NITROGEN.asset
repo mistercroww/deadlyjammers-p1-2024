@@ -20,3 +20,4 @@ MonoBehaviour:
     type: 3}
   inHandLocalPosition: {x: 0.25, y: -0.31, z: 0.02}
   inHandLocalRotation: {x: 280.81998, y: 0.000018192117, z: 257.85995}
+  inHandScale: {x: 100, y: 100, z: 100}

@@ -104,6 +104,7 @@ public class HumunculusController : MonoBehaviour
     public Animator homunculoAnimator2;
     public Animator homunculoAnimator3;
     public Animator homunculoAnimator4;
+    private static readonly int Eat = Animator.StringToHash("Eat");
 
 
     // Start is called before the first frame update
@@ -314,6 +315,7 @@ public class HumunculusController : MonoBehaviour
         chickenPiece.SetActive(true);
         canPieces.SetActive(true);
         foodNeededEvent?.Invoke();
+        homunculoAnimator3.SetTrigger(Eat);
     }
 
     public void FillOxygen(float oxygenIncome)
@@ -447,13 +449,21 @@ public class HumunculusController : MonoBehaviour
             organicRemains[i].SetActive(enableIt);
         }
     }
+    
+    
 
     private void EnableDeadHomunculoAnimation()
     {
         switch (ExtensionMethods.CurrentAvatar(_gameManager.currentDay))
         {
-            case 2:
+            case 1:
                 homunculoAnimator2.SetBool("Low", true);
+                break;
+            case 2:
+                homunculoAnimator3.SetBool("Low", true);
+                break;
+            case 3:
+                // homunculoAnimator4.SetBool("Low", true);
                 break;
         }
     }
@@ -462,8 +472,14 @@ public class HumunculusController : MonoBehaviour
     {
         switch (ExtensionMethods.CurrentAvatar(_gameManager.currentDay))
         {
+            case 1:
+                homunculoAnimator2.SetBool("Low", false);
+                break;
             case 2:
-                homunculoAnimator2.SetBool("Low", true);
+                homunculoAnimator3.SetBool("Low", false);
+                break;
+            case 3:
+                // homunculoAnimator4.SetBool("Low", false);
                 break;
         }
     }

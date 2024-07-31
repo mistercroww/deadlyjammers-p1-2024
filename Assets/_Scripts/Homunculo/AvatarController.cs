@@ -18,7 +18,7 @@ public class AvatarController : MonoBehaviour
         DisableAllAvatars();
         avatars[ExtensionMethods.CurrentAvatar(_gameManager.currentDay)].SetActive(true);
 
-        print("Se cambio el avatar al nro" + (ExtensionMethods.HomunculusAvatar[_gameManager.currentDay] - 1));
+        print("Se cambio el avatar al nro" + (ExtensionMethods.HomunculusAvatar[_gameManager.currentDay]));
     }
 
     private void DisableAllAvatars()

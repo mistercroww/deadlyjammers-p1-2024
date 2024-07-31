@@ -6,6 +6,12 @@ public class ExitDoor : MonoBehaviour, IInteractable
     public bool isDoorEnabled = true;
 
     public GameManager _gameManager;
+    private ClipboardController _clipboardController;
+
+    private void Start()
+    {
+        _clipboardController = FindObjectOfType<ClipboardController>();
+    }
 
     private void Update()
     {
@@ -17,6 +23,7 @@ public class ExitDoor : MonoBehaviour, IInteractable
 
     public bool IsInteractable()
     {
+        isDoorEnabled = _clipboardController.IsAllChecked();
         return isDoorEnabled;
     }
 

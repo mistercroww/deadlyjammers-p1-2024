@@ -142,7 +142,7 @@ public class SwitchLights : MonoBehaviour, IInteractable
 
             if (_powerOffDecreaseRateCounter < 0)
             {
-                if (Random.value <= 0.3f)
+                if (Random.value <= 0.1f)
                 {
                     TogglePower();
                 }

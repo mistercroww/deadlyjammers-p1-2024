@@ -100,4 +100,9 @@ public class ClipboardController : MonoBehaviour
             cleanUnchecked.SetActive(true);
         }
     }
+
+    public bool IsAllChecked()
+    {
+        return hungerFilled && oxygenFilled && argonFilled && nitrogenFilled && dirtyFilled;
+    }
 }
