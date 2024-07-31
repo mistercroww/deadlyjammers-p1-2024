@@ -42,8 +42,8 @@ public class UI_ColorChangeHelper : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        if (targetImg) targetImg.color = color_B;
+        if (targetImg) targetImg.color = Color.Lerp(color_A, color_B, lerpCurve.Evaluate(1f));
 
-        if (targetText) targetText.color = color_B;
+        if (targetText) targetText.color = Color.Lerp(color_A, color_B, lerpCurve.Evaluate(1f));
     }
 }
