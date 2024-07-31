@@ -10,4 +10,6 @@ public class ItemSO : ScriptableObject {
     [TextArea]
     public string itemDescription;
     public GameObject itemPrefab;
+    public Vector3 inHandLocalPosition;
+    public Vector3 inHandLocalRotation;
 }

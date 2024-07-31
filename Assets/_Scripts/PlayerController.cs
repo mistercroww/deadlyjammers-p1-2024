@@ -69,8 +69,14 @@ public class PlayerController : MonoBehaviour
     public void PickupItem(ItemSO newItem) {
         //var tItem = Instantiate(newItem.itemPrefab, handTransform);
         currentItemInHand = Instantiate(newItem.itemPrefab, handTransform).GetComponent<Item>();
-        currentItemInHand.transform.localPosition = Vector3.zero;
-        currentItemInHand.transform.localEulerAngles = Vector3.zero;
+
+        Vector3 localPos = newItem.inHandLocalPosition;
+        Vector3 localRot = newItem.inHandLocalRotation;
+
+        currentItemInHand.transform.localPosition = localPos;
+        currentItemInHand.transform.localEulerAngles = localRot;
+
+
         currentItemInHand.SetCollisionState(false);
     }
     public static ItemSO GetCurrentItemSO() {
