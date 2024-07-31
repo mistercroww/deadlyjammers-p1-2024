@@ -26,11 +26,13 @@ public class PlayerController : MonoBehaviour
     }
 
     private void ClipboardAnimationHandler() {
+        if (!playerMovement.canDrive) return;
         if (clipboardAnim == null) return;
         clipboardAnim.SetBool("Check", Input.GetMouseButton(1));
     }
 
     private void InteractionCheck() {
+        if (!playerMovement.canDrive) return;
         int lm = 1 << 6;
         lm = ~lm;
 
