@@ -11,7 +11,7 @@ public static class ExtensionMethods
     public static readonly float[] NitrogenMultiplier =
         { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
 
-    public static readonly float[] DirtyMultiplier = { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+    public static readonly float[] DirtyMultiplier = { 2f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
 
     public static readonly float[] RadioBuff = { .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f };
 

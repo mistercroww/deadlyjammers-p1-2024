@@ -85,7 +85,7 @@ namespace _Scripts.Homunculo
             if (_beepIncreaseRateCounter < 0)
             {
                 beepAudio.clip = beepSFX;
-                if (_humunculusController.isKillMode)
+                if (_humunculusController.hungerKillMode)
                 {
                     beepAudio.Play();
                     _beepIncreaseRateCounter = speedyBeepIncreaseTimeCounter;

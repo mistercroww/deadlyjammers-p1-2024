@@ -13,13 +13,17 @@ public class GameManager : MonoBehaviour
     public GameObject _player;
     public HumunculusController _humunculusController;
     public Transform _startPoint;
-
+    public GameObject gameOverScreen;
+    
     // Day parameters
     public float dayDecreaseTimeCounter = 300f;
     public float _dayDecreaseRateCounter = 0.1f;
     public UnityEvent changeDayEvent;
-    public UnityEvent playerDeadEvent;
     public UnityEvent endGameEvent;
+
+    // Contador para salir del Canvas GameOver
+    [SerializeField]private float _gameOverDecreaseTimeCounter = 10f;
+    private bool _gameOver = false;
 
     private void Awake()
     {
@@ -37,7 +41,24 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        DayTimerCountdown();
+        // DayTimerCountdown();
+        
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            StartGameOver();
+        }
+
+        if (_gameOver)
+        {
+            _gameOverDecreaseTimeCounter -= Time.deltaTime;
+            if (_gameOverDecreaseTimeCounter < 0)
+            {
+                if (Input.anyKey)
+                {
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+                }
+            }
+        }
     }
 
     public void NextGameDay()
@@ -77,5 +98,11 @@ public class GameManager : MonoBehaviour
     public void TeleportPlayerToStartPoint()
     {
         _player.transform.position = _startPoint.position;
+    }
+
+    public void StartGameOver()
+    {
+        gameOverScreen.SetActive(true);
+        _gameOver = true;
     }
 }

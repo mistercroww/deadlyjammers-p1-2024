@@ -67,7 +67,8 @@ public class HumunculusController : MonoBehaviour
 
 
     // public float MadnessIndicator;
-    public bool isKillMode = false;
+    public bool hungerKillMode = false;
+    public bool gasKillMode = false;
     public float deadDecreaseTimeCounter = 20f;
     public float _deadDecreaseRateCounter = 0.1f;
     public UnityEvent startDeadEvent;
@@ -93,10 +94,17 @@ public class HumunculusController : MonoBehaviour
     public GameObject argonGasTank;
     public GameObject nitrogenGasTank;
     public UnityEvent gasRefillEvent;
-    
+
     // Food pieces
     public GameObject chickenPiece;
     public GameObject canPieces;
+
+    // Animators Homuculo
+    public Animator homunculoAnimator1;
+    public Animator homunculoAnimator2;
+    public Animator homunculoAnimator3;
+    public Animator homunculoAnimator4;
+
 
     // Start is called before the first frame update
     void Start()
@@ -346,15 +354,15 @@ public class HumunculusController : MonoBehaviour
     {
         if (hungerIndicator >= 100)
         {
-            isKillMode = true;
-            greenScreen.SetActive(!isKillMode);
-            redScreen.SetActive(isKillMode);
+            hungerKillMode = true;
+            greenScreen.SetActive(!hungerKillMode);
+            redScreen.SetActive(hungerKillMode);
         }
         else
         {
-            isKillMode = false;
-            greenScreen.SetActive(!isKillMode);
-            redScreen.SetActive(isKillMode);
+            hungerKillMode = false;
+            greenScreen.SetActive(!hungerKillMode);
+            redScreen.SetActive(hungerKillMode);
         }
     }
 
@@ -362,22 +370,24 @@ public class HumunculusController : MonoBehaviour
     {
         if ((oxygenIndicator >= 100) || (argonIndicator >= 100) || (nitrogenIndicator >= 100))
         {
-            isKillMode = true;
-            gasGreenScreen.SetActive(!isKillMode);
-            gasRedScreen.SetActive(isKillMode);
+            gasKillMode = true;
+            gasGreenScreen.SetActive(!gasKillMode);
+            gasRedScreen.SetActive(gasKillMode);
         }
         else
         {
-            isKillMode = false;
-            gasGreenScreen.SetActive(!isKillMode);
-            gasRedScreen.SetActive(isKillMode);
+            gasKillMode = false;
+            gasGreenScreen.SetActive(!gasKillMode);
+            gasRedScreen.SetActive(gasKillMode);
         }
     }
 
     public void DeadCountdown()
     {
-        if (isKillMode && !isDead)
+        if ((hungerKillMode || gasKillMode) && !isDead)
         {
+            EnableDeadHomunculoAnimation();
+
             _deadDecreaseRateCounter -= Time.deltaTime;
             if (_deadDecreaseRateCounter < 0)
             {
@@ -389,6 +399,7 @@ public class HumunculusController : MonoBehaviour
         }
         else
         {
+            DisableDeadHomunculoAnimation();
             _deadDecreaseRateCounter = deadDecreaseTimeCounter;
         }
     }
@@ -434,6 +445,26 @@ public class HumunculusController : MonoBehaviour
         for (int i = 0; i < organicRemains.Length; i++)
         {
             organicRemains[i].SetActive(enableIt);
+        }
+    }
+
+    private void EnableDeadHomunculoAnimation()
+    {
+        switch (ExtensionMethods.CurrentAvatar(_gameManager.currentDay))
+        {
+            case 2:
+                homunculoAnimator2.SetBool("Low", true);
+                break;
+        }
+    }
+
+    private void DisableDeadHomunculoAnimation()
+    {
+        switch (ExtensionMethods.CurrentAvatar(_gameManager.currentDay))
+        {
+            case 2:
+                homunculoAnimator2.SetBool("Low", true);
+                break;
         }
     }
 }
