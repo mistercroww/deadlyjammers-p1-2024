@@ -20,7 +20,8 @@ public class HumunculusController : MonoBehaviour
     public float hungerDecreaseTimeCounter = 0.5f;
     private float _hungerDecreaseRateCounter;
     public bool hungerRefilled = false;
-    public UnityEvent hungryEvent;
+    public UnityEvent hungerEvent;
+    public UnityEvent foodNeededEvent;
 
     // Oxygen Indicator
     [Range(0f, 100f)] public float oxygenIndicator;
@@ -91,7 +92,8 @@ public class HumunculusController : MonoBehaviour
     public GameObject oxygenGasTank;
     public GameObject argonGasTank;
     public GameObject nitrogenGasTank;
-
+    public UnityEvent gasRefillEvent;
+    
     // Food pieces
     public GameObject chickenPiece;
     public GameObject canPieces;
@@ -149,7 +151,7 @@ public class HumunculusController : MonoBehaviour
                 hungerIndicator =
                     ExtensionMethods.AddToValueWithMax(hungerIndicator, _hungerDecressAmount, needsIndicatorLimit);
 
-                CanPlaySound(hungryEvent, hungerIndicator, needsIndicatorLimit, 50f, false);
+                CanPlaySound(hungerEvent, hungerIndicator, needsIndicatorLimit, 50f, false);
             }
 
             setNeedleRotation(hungerNeedle, hungerIndicator);
@@ -248,7 +250,7 @@ public class HumunculusController : MonoBehaviour
     private void CanPlaySound(UnityEvent sfxEvent, float indicator, float indicatorLimit, float shootingPercentage,
         bool touchSanity)
     {
-        if (Random.Range(0, 11) == 5 && sfxEvent != null &&
+        if (Random.Range(0, 20) == 5 && sfxEvent != null &&
             ExtensionMethods.Percentage(indicator, indicatorLimit) >= shootingPercentage)
         {
             sfxEvent.Invoke();
@@ -303,6 +305,7 @@ public class HumunculusController : MonoBehaviour
         setNeedleRotation(hungerNeedle, hungerIndicator);
         chickenPiece.SetActive(true);
         canPieces.SetActive(true);
+        foodNeededEvent?.Invoke();
     }
 
     public void FillOxygen(float oxygenIncome)
@@ -311,6 +314,7 @@ public class HumunculusController : MonoBehaviour
         oxygenIndicator = ExtensionMethods.SubtractToValueWithMin(oxygenIndicator, oxygenIncome, 0);
         setNeedleRotation(oxygenNeedle, oxygenIndicator);
         oxygenGasTank.SetActive(true);
+        gasRefillEvent?.Invoke();
     }
 
     public void FillArgon(float argonIncome)
@@ -319,6 +323,7 @@ public class HumunculusController : MonoBehaviour
         argonIndicator = ExtensionMethods.SubtractToValueWithMin(argonIndicator, argonIncome, 0);
         setNeedleRotation(argonNeedle, argonIndicator);
         argonGasTank.SetActive(true);
+        gasRefillEvent?.Invoke();
     }
 
     public void FillNitrogen(float nitrogenIncome)
@@ -327,6 +332,7 @@ public class HumunculusController : MonoBehaviour
         nitrogenIndicator = ExtensionMethods.SubtractToValueWithMin(nitrogenIndicator, nitrogenIncome, 0);
         setNeedleRotation(nitrogenNeedle, nitrogenIndicator);
         nitrogenGasTank.SetActive(true);
+        gasRefillEvent?.Invoke();
     }
 
     public void FillDirty(float dirtyIncome)

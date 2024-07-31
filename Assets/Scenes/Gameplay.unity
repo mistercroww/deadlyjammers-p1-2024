@@ -584,10 +584,21 @@ MonoBehaviour:
   mixAudio: {fileID: 152604905}
   beepAudio: {fileID: 2070832435}
   beepSFX: {fileID: 8300000, guid: 88fff0aba906d8b41b1ff819ee36c080, type: 3}
-  eatSFX:
+  eatSfx:
   - {fileID: 0}
   - {fileID: 8300000, guid: 4582abf4d45a8de43902a057776f45f8, type: 3}
   - {fileID: 8300000, guid: 4582abf4d45a8de43902a057776f45f8, type: 3}
+  hungerSfx:
+  - {fileID: 8300000, guid: 408dd84d47e8b324987699fd6a0f54e5, type: 3}
+  - {fileID: 8300000, guid: f49ad1baec3e57d4c9ed193030b60737, type: 3}
+  - {fileID: 8300000, guid: f49ad1baec3e57d4c9ed193030b60737, type: 3}
+  helpSfx:
+  - {fileID: 8300000, guid: 6211a893eedd31546bce4e5b3b2d0a6d, type: 3}
+  - {fileID: 8300000, guid: 91ef561a7ebe88342b68d4a538e7738b, type: 3}
+  - {fileID: 8300000, guid: 468cd4b0036af0b4087d6199db4dcb75, type: 3}
+  gasReleaseSfx:
+  - {fileID: 8300000, guid: 0765b3fbad57d78488787b56aa02c1dd, type: 3}
+  - {fileID: 8300000, guid: 1b4c5a867b8db20418a03da4481c4eb4, type: 3}
   _humunculusController: {fileID: 972170355}
   beepIncreaseTimeCounter: 2
   speedyBeepIncreaseTimeCounter: 0.3
@@ -3513,8 +3524,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.397, y: 1.717, z: 11.023}
+  m_LocalRotation: {x: 0, y: -0.5774045, z: 0, w: 0.8164583}
+  m_LocalPosition: {x: 1.408057, y: 1.717, z: 12.235009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4196,7 +4207,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413068977}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -11181,17 +11192,32 @@ MonoBehaviour:
   _hungerDecressAmount: 0
   hungerDecreaseTimeCounter: 1.32
   hungerRefilled: 0
-  hungryEvent:
+  hungerEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 44049528}
         m_TargetAssemblyTypeName: _Scripts.Homunculo.HomSFXController, Assembly-CSharp
-        m_MethodName: Hungry
-        m_Mode: 1
+        m_MethodName: runFoodSfx
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  foodNeededEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 44049528}
+        m_TargetAssemblyTypeName: _Scripts.Homunculo.HomSFXController, Assembly-CSharp
+        m_MethodName: runFoodSfx
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11201,19 +11227,55 @@ MonoBehaviour:
   oxygenRefilled: 0
   oxygenSFXEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 44049528}
+        m_TargetAssemblyTypeName: _Scripts.Homunculo.HomSFXController, Assembly-CSharp
+        m_MethodName: runGasSfx
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   argonIndicator: 0
   argonDecreaseTimeCounter: 2
   argonRefilled: 0
   argonSFXEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 44049528}
+        m_TargetAssemblyTypeName: _Scripts.Homunculo.HomSFXController, Assembly-CSharp
+        m_MethodName: runGasSfx
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   nitrogenIndicator: 0
   nitrogenDecreaseTimeCounter: 2
   nitrogenRefilled: 0
   nitrogenSFXEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 44049528}
+        m_TargetAssemblyTypeName: _Scripts.Homunculo.HomSFXController, Assembly-CSharp
+        m_MethodName: runGasSfx
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dirtyIndicator: 0
   dirtyDecreaseTimeCounter: 2
   dirtyRefilled: 0
@@ -11278,6 +11340,21 @@ MonoBehaviour:
   oxygenGasTank: {fileID: 803115962}
   argonGasTank: {fileID: 1056270984}
   nitrogenGasTank: {fileID: 467282431}
+  gasRefillEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 44049528}
+        m_TargetAssemblyTypeName: _Scripts.Homunculo.HomSFXController, Assembly-CSharp
+        m_MethodName: runGasSfx
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chickenPiece: {fileID: 1711442348}
   canPieces: {fileID: 2123710282}
 --- !u!1001 &972945457
@@ -11993,7 +12070,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026016326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -20688,7 +20765,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900558369}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -22611,7 +22688,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009309228}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24253,7 +24330,7 @@ PrefabInstance:
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.397
+      value: 1.343
       objectReference: {fileID: 0}
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
@@ -24263,27 +24340,27 @@ PrefabInstance:
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.092
+      value: 12.258
       objectReference: {fileID: 0}
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8164583
       objectReference: {fileID: 0}
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.5774045
       objectReference: {fileID: 0}
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
@@ -24293,7 +24370,7 @@ PrefabInstance:
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -70.536
       objectReference: {fileID: 0}
     - target: {fileID: 4580548717024398258, guid: 5a862cf29318ce34da9f36fe48358d8b,
         type: 3}
