@@ -845,6 +845,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f16407b22b3a343994fa94794c9089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &84601200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 5574803242230473754}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &97594724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2350,10 +2356,14 @@ MonoBehaviour:
   currentDay: 1
   maxGameDay: 10
   _player: {fileID: 0}
+  _humunculusController: {fileID: 0}
   _startPoint: {fileID: 0}
   dayDecreaseTimeCounter: 300
   _dayDecreaseRateCounter: 0.1
   changeDayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playerDeadEvent:
     m_PersistentCalls:
       m_Calls: []
   endGameEvent:
@@ -8381,45 +8391,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 0}
+  needsIndicatorLimit: 100
   hungerIndicator: 0
-  hungerDecressAmount: 1
+  _hungerDecressAmount: 0
   hungerDecreaseTimeCounter: 1.32
+  hungerRefilled: 0
   hungryEvent:
     m_PersistentCalls:
       m_Calls: []
-  fillHungerEvent:
-    m_PersistentCalls:
-      m_Calls: []
   oxygenIndicator: 0
-  oxygenDecressAmount: 1
   oxygenDecreaseTimeCounter: 2
+  oxygenRefilled: 0
   oxygenSFXEvent:
     m_PersistentCalls:
       m_Calls: []
-  fillOxygenEvent:
-    m_PersistentCalls:
-      m_Calls: []
   argonIndicator: 0
-  argonDecressAmount: 0.2
   argonDecreaseTimeCounter: 0.5
+  argonRefilled: 0
   argonSFXEvent:
     m_PersistentCalls:
       m_Calls: []
-  fillArgonEvent:
-    m_PersistentCalls:
-      m_Calls: []
   nitrogenIndicator: 0
-  nitrogenDecressAmount: 0.2
   nitrogenDecreaseTimeCounter: 0.5
+  nitrogenRefilled: 0
   nitrogenSFXEvent:
     m_PersistentCalls:
       m_Calls: []
-  fillNitrogenEvent:
+  dirtyIndicator: 0
+  dirtyDecreaseTimeCounter: 0.5
+  dirtyRefilled: 0
+  organicRemains: []
+  dirtySFXEvent:
     m_PersistentCalls:
       m_Calls: []
   funIndicator: 0
-  funDecressAmount: 0.2
-  funDecreaseTimeCounter: 0.5
+  funIncreaseAmount: 0
+  funIncreaseTimeCounter: 0
+  funIndicatorLimit: 10
   _radioController: {fileID: 0}
   isKillMode: 0
   deadDecreaseTimeCounter: 20
@@ -8427,8 +8435,11 @@ MonoBehaviour:
   startDeadEvent:
     m_PersistentCalls:
       m_Calls: []
-  isDead: 0
   playerSanityAffect:
+    m_PersistentCalls:
+      m_Calls: []
+  isDead: 0
+  switchKillModeEvent:
     m_PersistentCalls:
       m_Calls: []
   hungerNeedle: {fileID: 755817831}
@@ -8437,6 +8448,13 @@ MonoBehaviour:
   nitrogenNeedle: {fileID: 0}
   greenScreen: {fileID: 1140778458}
   redScreen: {fileID: 807973699}
+  gasGreenScreen: {fileID: 0}
+  gasRedScreen: {fileID: 0}
+  oxygenGasTank: {fileID: 0}
+  argonGasTank: {fileID: 0}
+  nitrogenGasTank: {fileID: 0}
+  chickenPiece: {fileID: 0}
+  canPieces: {fileID: 0}
 --- !u!1001 &972945457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9577,6 +9595,7 @@ Transform:
   - {fileID: 1769613975}
   - {fileID: 2072324742}
   - {fileID: 2071764927101200664}
+  - {fileID: 84601200}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1102656309
@@ -19321,6 +19340,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f16407b22b3a343994fa94794c9089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &5574803242230473754
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1097465141}
+    m_Modifications:
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707188222583233467, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950853156109911841, guid: 27c7c2402aa25934396b29f52638fdd7,
+        type: 3}
+      propertyPath: m_Name
+      value: ESCAPE_v1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27c7c2402aa25934396b29f52638fdd7, type: 3}
 --- !u!1001 &5764344034138947704
 PrefabInstance:
   m_ObjectHideFlags: 0
