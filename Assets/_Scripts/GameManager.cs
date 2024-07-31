@@ -76,13 +76,9 @@ public class GameManager : MonoBehaviour
             endGameEvent.Invoke();
         }
 
-        if (ExtensionMethods.CurrentAvatar(currentDay) == 2 && currentDay == 6)
+        if (ExtensionMethods.CurrentAvatar(currentDay) == 3 && currentDay == 6)
         {
             _destroyLabTrigger.SetActive(true);
-        }
-        else
-        {
-            _destroyLabTrigger.SetActive(false);
         }
 
         if (changeDayEvent != null)
@@ -135,6 +131,6 @@ public class GameManager : MonoBehaviour
 
     public void DisableTriggerArea()
     {
-        _destroyLabTrigger.SetActive(false);
+        // _destroyLabTrigger.SetActive(false);
     }
 }

@@ -14,9 +14,9 @@ public static class ExtensionMethods
 
     public static readonly float[] RadioBuff = { .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f };
 
-    public static readonly int MaxDays = 9;
+    public static readonly int MaxDays = 8;
 
-    public static readonly int[] DayTracks = { 0, 0, 1, 1, 2, 2, 2, 2, 2, 2 };
+    public static readonly int[] DayTracks = { 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2 };
 
     public static readonly int[] HomunculusAvatar = { 0, 0, 1, 1, 2, 2, 3, 3, 3 };
 

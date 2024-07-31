@@ -134,6 +134,38 @@ public class SwitchLights : MonoBehaviour, IInteractable
         }
     }
 
+    public void PowerOff()
+    {
+        if (isGeneralBreaker)
+        {
+            _gameManager.energyOn = false;
+        }
+
+        foreach (var t in lightsControllers)
+        {
+            var turnOff = _gameManager.energyOn ? t.TurnOn() : t.TurnOff();
+        }
+
+        foreach (var t in emergencyLightsControllers)
+        {
+            t.SwitchLights();
+        }
+
+        if (switchInterruptor)
+        {
+            if (!_gameManager.energyOn)
+            {
+                switchInterruptor.transform.localEulerAngles = -(Vector3.right * 60);
+            }
+            else
+            {
+                switchInterruptor.transform.localEulerAngles = (Vector3.right * 60);
+            }
+        }
+
+        switchClip.Play();
+    }
+
     private void PowerOffTimer()
     {
         if (_gameManager.energyOn)
