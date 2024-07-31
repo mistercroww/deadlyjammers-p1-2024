@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool energyOn = true;
 
-    public int currentDay = 1;
+    public int currentDay = 0;
     public int maxGameDay = ExtensionMethods.MaxDays;
 
     public GameObject _player;
