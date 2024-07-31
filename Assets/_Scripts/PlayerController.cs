@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Transform handTransform;
     public Item currentItemInHand;
     public float sanity = 100;
+    public Volume sanityVolume;
     public Animator clipboardAnim;
 
     private void Awake() {
@@ -18,6 +20,9 @@ public class PlayerController : MonoBehaviour
     private void Update() {
         InteractionCheck();
         ClipboardAnimationHandler();
+
+        //sanity
+        sanityVolume.weight = 1f - (sanity / 100f);
     }
 
     private void ClipboardAnimationHandler() {
