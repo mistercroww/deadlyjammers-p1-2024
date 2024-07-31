@@ -14,6 +14,7 @@ public class FinalHomunculoController : MonoBehaviour
 
     public AudioSource audioMix;
     public AudioClip feedSfx;
+    public AudioClip idleHomun;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class FinalHomunculoController : MonoBehaviour
         }
         else
         {
+            audioMix.clip = feedSfx;
             audioMix.Play();
         }
         
