@@ -3,6 +3,7 @@ using UnityEngine;
 public class SwitchLights : MonoBehaviour, IInteractable
 {
     public LightsController[] lightsControllers;
+    public LightsController[] emergencyLightsControllers;
     public GameObject switchInterruptor;
     public AudioSource switchClip;
     public bool isGeneralBreaker = false;
@@ -39,10 +40,9 @@ public class SwitchLights : MonoBehaviour, IInteractable
     public void GeneralTrigger()
     {
         bool isOn = false;
-
-        for (int i = 0; i < lightsControllers.Length; i++)
+        foreach (var t in lightsControllers)
         {
-            isOn = lightsControllers[i].SwitchLights();
+            isOn = t.SwitchLights();
         }
 
         if (switchInterruptor)
@@ -62,16 +62,25 @@ public class SwitchLights : MonoBehaviour, IInteractable
 
     public void BreakerSwitch()
     {
-        bool isOn = false;
-
-        for (int i = 0; i < lightsControllers.Length; i++)
+        if (isGeneralBreaker)
         {
-            isOn = isGeneralBreaker ? lightsControllers[i].TurnOff() : lightsControllers[i].SwitchLights();
+            _gameManager.energyOn = !_gameManager.energyOn;
         }
 
+        foreach (var t in lightsControllers)
+        {
+            var turnOff = _gameManager.energyOn? t.TurnOn(): t.TurnOff();
+        }
+
+        
+        foreach (var t in emergencyLightsControllers)
+        {
+            t.SwitchLights();
+        }
+        
         if (switchInterruptor)
         {
-            if (!isOn)
+            if (!_gameManager.energyOn)
             {
                 switchInterruptor.transform.localEulerAngles = -(Vector3.right * 60);
             }
@@ -83,10 +92,7 @@ public class SwitchLights : MonoBehaviour, IInteractable
 
         switchClip.Play();
 
-        if (isGeneralBreaker)
-        {
-            _gameManager.energyOn = !_gameManager.energyOn;
-        }
+
     }
 
     public InteractableType InteractionType()

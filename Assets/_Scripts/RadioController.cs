@@ -48,6 +48,12 @@ public class RadioController : MonoBehaviour, IInteractable
 
     private void SetTrack()
     {
-        mixAudio.clip = mixes[ExtensionMethods.DayTracks[_gameManager.currentDay - 1]];
+        mixAudio.clip = mixes[ExtensionMethods.DayTracks[_gameManager.currentDay - 1] - 1];
+    }
+
+    public void StopRadio()
+    {
+        mixAudio.Stop();
+        isOn = false;
     }
 }

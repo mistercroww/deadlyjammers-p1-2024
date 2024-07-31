@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ExitDoor : MonoBehaviour, IInteractable
@@ -5,6 +6,14 @@ public class ExitDoor : MonoBehaviour, IInteractable
     public bool isDoorEnabled = true;
 
     public GameManager _gameManager;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            LoadNextLevel();
+        }
+    }
 
     public bool IsInteractable()
     {

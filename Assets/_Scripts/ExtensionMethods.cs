@@ -1,16 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class ExtensionMethods
 {
-    public static readonly float[] NeedsMultiplier = { 1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f, 5f };
+    public static readonly float[] HungerMultiplier = { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f };
+
+    public static readonly float[] OxygenMultiplier = { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f};
+
+    public static readonly float[] ArgonMultiplier = { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f};
+
+    public static readonly float[] NitrogenMultiplier =
+        { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+
+    public static readonly float[] DirtyMultiplier = { 0.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+
+    public static readonly float[] RadioBuff = { .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f };
 
     public static readonly int MaxDays = 10;
 
     public static readonly int[] DayTracks = { 1, 1, 1, 2, 2, 2, 3, 3, 3, 3 };
 
-    public static readonly int[] HomunculusAvatar = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+    public static readonly int[] HomunculusAvatar = { 2, 2, 2, 2, 2, 2, 3, 3, 3, 3 };
 
 
     public static float Remap(this float value, float from1, float to1, float from2, float to2)
@@ -42,7 +51,38 @@ public static class ExtensionMethods
     {
         return (current / maxValue) * 100f;
     }
+
+    public static float CalculateNeedsMultiplier(int currentDay, float funIndicator, float maxFunIndicator,
+        float[] multiplier)
+    {
+        float needMultiplier = multiplier[currentDay - 1];
+        float buff = RadioBuff[currentDay - 1];
+
+        if (funIndicator >= maxFunIndicator)
+        {
+            return needMultiplier - buff;
+        }
+        else
+        {
+            return needMultiplier;
+        }
+    }
+
+    public static void RandomizeArray(GameObject[] arr)
+    {
+        for (var i = arr.Length - 1; i > 0; i--)
+        {
+            var r = Random.Range(0, i);
+            (arr[i], arr[r]) = (arr[r], arr[i]);
+        }
+    }
+
+    public static int CurrentAvatar(float currentDay)
+    {
+        return (HomunculusAvatar[(int)currentDay - 1] - 1);
+    }
 }
+
 
 public enum InteractableType
 {
