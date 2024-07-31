@@ -70,11 +70,10 @@ public class PlayerController : MonoBehaviour
         //var tItem = Instantiate(newItem.itemPrefab, handTransform);
         currentItemInHand = Instantiate(newItem.itemPrefab, handTransform).GetComponent<Item>();
 
-        Vector3 localPos = newItem.inHandLocalPosition;
-        Vector3 localRot = newItem.inHandLocalRotation;
 
-        currentItemInHand.transform.localPosition = localPos;
-        currentItemInHand.transform.localEulerAngles = localRot;
+        currentItemInHand.transform.localPosition = newItem.inHandLocalPosition;
+        currentItemInHand.transform.localEulerAngles = newItem.inHandLocalRotation;
+        currentItemInHand.transform.localScale = newItem.inHandScale;
 
 
         currentItemInHand.SetCollisionState(false);
