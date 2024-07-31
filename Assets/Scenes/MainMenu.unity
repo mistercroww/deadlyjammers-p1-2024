@@ -9812,7 +9812,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Atelephobia
+  m_text: Atelophobia
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 72171897008af4e4ba6b87258a2eb6b2, type: 2}
   m_sharedMaterial: {fileID: -3546661044406547537, guid: 72171897008af4e4ba6b87258a2eb6b2,
