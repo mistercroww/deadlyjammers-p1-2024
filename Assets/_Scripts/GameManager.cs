@@ -5,20 +5,20 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public bool energyOn = true;
 
     public int currentDay = 1;
     public int maxGameDay = ExtensionMethods.MaxDays;
 
     public GameObject _player;
-
+    public HumunculusController _humunculusController;
     public Transform _startPoint;
 
     // Day parameters
     public float dayDecreaseTimeCounter = 300f;
     public float _dayDecreaseRateCounter = 0.1f;
     public UnityEvent changeDayEvent;
+    public UnityEvent playerDeadEvent;
     public UnityEvent endGameEvent;
 
     private void Awake()
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
         _dayDecreaseRateCounter = dayDecreaseTimeCounter;
+        maxGameDay = ExtensionMethods.MaxDays;
     }
 
     private void Update()
@@ -59,14 +60,22 @@ public class GameManager : MonoBehaviour
         _dayDecreaseRateCounter -= Time.deltaTime;
         if (_dayDecreaseRateCounter < 0)
         {
-            if (changeDayEvent != null)
-            {
-                changeDayEvent.Invoke();
-            }
+            _humunculusController?.startDeadEvent?.Invoke();
 
             NextGameDay();
             print("Tiempo de dia finalizado, se forza el cambio de dia, dia nro " + currentDay);
             _player.transform.position = _startPoint.position;
         }
+    }
+
+    public void KillPlayer()
+    {
+        changeDayEvent?.Invoke();
+        TeleportPlayerToStartPoint();
+    }
+
+    public void TeleportPlayerToStartPoint()
+    {
+        _player.transform.position = _startPoint.position;
     }
 }

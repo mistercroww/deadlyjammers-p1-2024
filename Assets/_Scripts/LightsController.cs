@@ -22,4 +22,11 @@ public class LightsController : MonoBehaviour
         off.SetActive(true);
         return false;
     }
+    
+    public bool TurnOn()
+    {
+        on.SetActive(true);
+        off.SetActive(false);
+        return true;
+    }
 }
