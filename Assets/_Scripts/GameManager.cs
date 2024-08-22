@@ -48,12 +48,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         NewDayAnimation();
-        /*
         if (Input.GetKeyDown(KeyCode.F3))
         {
             StartGameOver();
         }
-        */
         if (_gameOver)
         {
             _gameOverDecreaseTimeCounter -= Time.deltaTime;

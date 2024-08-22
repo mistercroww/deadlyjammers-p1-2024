@@ -309,6 +309,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Lights
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6665b4b29edaf4a46879fbd2afec30fa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -416,6 +421,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Lights (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6665b4b29edaf4a46879fbd2afec30fa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -546,6 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   on: {fileID: 3292554473597391310}
   off: {fileID: 2488105175763827642}
+  IsOn: 1
 --- !u!4 &8970374529787715093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6665b4b29edaf4a46879fbd2afec30fa,
