@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         UI_Manager.instance.SetInteractionTextState(false);
 
         if (Physics.SphereCast(
-            Camera.main.transform.position, 0.1f, Camera.main.transform.forward, out RaycastHit hit, 1.5f, lm)) {
+            Camera.main.transform.position, 0.1f, Camera.main.transform.forward, out RaycastHit hit, 2.3f, lm)) {
             if (hit.collider.CompareTag("Interactable")) {
                 IInteractable interactable = hit.collider.GetComponent<IInteractable>();
                 if (interactable != null) {
@@ -58,8 +58,8 @@ public class PlayerController : MonoBehaviour
     }
     public void ClearCurrentItem(bool dropItem) {
         if (currentItemInHand && dropItem) {
-            Vector3 spawnPos = transform.position + (transform.forward.normalized * 0.5f);
-            Instantiate(currentItemInHand.itemSO.itemPrefab, spawnPos, Quaternion.identity);
+            Vector3 spawnPos = transform.position + (transform.forward * 0.5f);
+            Instantiate(currentItemInHand.itemSO.itemPrefab, spawnPos, Quaternion.Euler(Vector3.right * -90f));
         }
         if(handTransform.childCount > 0) {
             for (int i = 0; i < handTransform.childCount; i++) {
@@ -70,13 +70,16 @@ public class PlayerController : MonoBehaviour
     }
     public void PickupItem(ItemSO newItem) {
         //var tItem = Instantiate(newItem.itemPrefab, handTransform);
-        currentItemInHand = Instantiate(newItem.itemPrefab, handTransform).GetComponent<Item>();
 
+        if(currentItemInHand != null) {
+            ClearCurrentItem(true);
+        }
+
+        currentItemInHand = Instantiate(newItem.itemPrefab, handTransform).GetComponent<Item>();
 
         currentItemInHand.transform.localPosition = newItem.inHandLocalPosition;
         currentItemInHand.transform.localEulerAngles = newItem.inHandLocalRotation;
         currentItemInHand.transform.localScale = newItem.inHandScale;
-
 
         currentItemInHand.SetCollisionState(false);
     }
