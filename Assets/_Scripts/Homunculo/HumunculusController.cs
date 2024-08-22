@@ -7,11 +7,6 @@ using Random = UnityEngine.Random;
 public class HumunculusController : MonoBehaviour
 {
     public GameManager _gameManager;
-    /* TODO: cambiar mecanica se gases, al iniciar un dia la nececidad de estos queda satisfecha y comienza a decrecer hasta que se
-     *  queda totalmente vacia, por lo cual el jugador debe insertar las bombonas de gas nuevamente, lo que llenara detendra la barra de
-     *  nececidad y dejara full esta
-     */
-
     public float needsIndicatorLimit = 100;
 
     // Hunger Indicator

@@ -11,7 +11,7 @@ public class SwitchLights : MonoBehaviour, IInteractable
 
     // Timer para ver si se corta la luz
     private float _powerOffDecressAmount = 0.1f;
-    private float _powerOffDecreaseTimeCounter = 5f;
+    private float _powerOffDecreaseTimeCounter = 20f;
     private float _powerOffDecreaseRateCounter;
 
     private GameManager _gameManager;
