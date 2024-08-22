@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _newDayDecreaseRateCounter = newDayDecreaseTimeCounter;
         _playerMovement = FindObjectOfType<PlayerMovement>();
@@ -48,12 +48,12 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         NewDayAnimation();
-
+        /*
         if (Input.GetKeyDown(KeyCode.F3))
         {
             StartGameOver();
         }
-
+        */
         if (_gameOver)
         {
             _gameOverDecreaseTimeCounter -= Time.deltaTime;

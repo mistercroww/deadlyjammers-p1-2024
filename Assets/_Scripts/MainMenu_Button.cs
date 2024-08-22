@@ -6,7 +6,11 @@ using UnityEngine.EventSystems;
 public class MainMenu_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     public GameObject indicatorObj;
     public float sideOffset = 25f;
-    
+
+    private void Awake() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
     public void PlayGame() {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
     }
