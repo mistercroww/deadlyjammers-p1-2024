@@ -15,12 +15,10 @@ public class ExitDoor : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        /*
         if (Input.GetKeyDown(KeyCode.F1))
         {
             LoadNextLevel();
         }
-        */
     }
 
     public bool IsInteractable()

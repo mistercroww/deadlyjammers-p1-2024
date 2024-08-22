@@ -444,8 +444,7 @@ public class HumunculusController : MonoBehaviour
             organicRemains[i].SetActive(enableIt);
         }
     }
-    
-    
+
 
     private void EnableDeadHomunculoAnimation()
     {

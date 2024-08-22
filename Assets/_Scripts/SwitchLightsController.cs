@@ -29,12 +29,10 @@ public class SwitchLights : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        /*
         if (Input.GetKeyDown(KeyCode.F2) && isGeneralBreaker)
         {
             TogglePower();
         }
-        */
         if (isGeneralBreaker)
         {
             PowerOffTimer();
