@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc363a3e289bc8f4e94ac784be5a3435, type: 3}
+  m_Name: ARGON
+  m_EditorClassIdentifier: 
+  itemID: argon
+  itemName: Argon
+  itemValue: 10
+  itemDescription: 
+  itemPrefab: {fileID: 2526560747352037722, guid: 3225a6c45b2bc90459296eebae9f1eb4,
+    type: 3}
+  inHandLocalPosition: {x: 0.25, y: -0.31, z: 0.02}
+  inHandLocalRotation: {x: 280.81998, y: 0.000018192117, z: 257.85995}
+  inHandScale: {x: 100, y: 100, z: 100}

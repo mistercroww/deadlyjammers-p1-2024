@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc363a3e289bc8f4e94ac784be5a3435, type: 3}
+  m_Name: RADIO
+  m_EditorClassIdentifier: 
+  itemID: radio
+  itemName: Radio
+  itemValue: 100
+  itemDescription: Radio for the creature
+  itemPrefab: {fileID: 6651040687020628180, guid: 28d2dc6007536c8458b7dc68d0ab39d0,
+    type: 3}
+  inHandLocalPosition: {x: 0.067, y: -0.215, z: -0.046}
+  inHandLocalRotation: {x: 9.779643, y: 210.16705, z: 326.14258}
+  inHandScale: {x: 0.55, y: 0.55, z: 0.55}

@@ -1,9 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class ExtensionMethods
 {
+    public static readonly float[] HungerMultiplier = { 1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f };
+
+    public static readonly float[] OxygenMultiplier = { 1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+
+    public static readonly float[] ArgonMultiplier = { 1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+
+    public static readonly float[] NitrogenMultiplier = { 1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+
+    public static readonly float[] DirtyMultiplier = { 10f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f };
+
+    public static readonly float[] RadioBuff = { .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f, .2f };
+
+    public static readonly int MaxDays = 8;
+
+    public static readonly int[] DayTracks = { 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2 };
+
+    public static readonly int[] HomunculusAvatar = { 0, 0, 1, 1, 2, 2, 3, 3, 3 };
+
+
     public static float Remap(this float value, float from1, float to1, float from2, float to2)
     {
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
@@ -28,10 +45,57 @@ public static class ExtensionMethods
     {
         return ((value - substract) < min) ? value = min : value - substract;
     }
+
+    public static float Percentage(float current, float maxValue)
+    {
+        return (current / maxValue) * 100f;
+    }
+
+    public static float CalculateNeedsMultiplier(int currentDay, float funIndicator, float maxFunIndicator,
+        float[] multiplier)
+    {
+        float needMultiplier = multiplier[currentDay];
+        float buff = RadioBuff[currentDay];
+
+        if (funIndicator >= maxFunIndicator)
+        {
+            return needMultiplier - buff;
+        }
+        else
+        {
+            return needMultiplier;
+        }
+    }
+
+    public static void RandomizeArray(GameObject[] arr)
+    {
+        for (var i = arr.Length - 1; i > 0; i--)
+        {
+            var r = Random.Range(0, i);
+            (arr[i], arr[r]) = (arr[r], arr[i]);
+        }
+    }
+
+    public static int CurrentAvatar(float currentDay)
+    {
+        return (HomunculusAvatar[(int)currentDay]);
+    }
+}
+
+
+public enum InteractableType
+{
+    Default,
+    Item,
+    ItemReceiver,
+    Switch,
+    Door,
+    Radio
 }
 
 public interface IInteractable
 {
     public bool IsInteractable();
     public void TriggerInteraction();
+    public InteractableType InteractionType();
 }

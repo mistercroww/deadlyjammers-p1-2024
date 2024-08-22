@@ -8,10 +8,25 @@ public class LightsController : MonoBehaviour
     public GameObject off;
     public bool IsOn = true;
 
-    public void SwitchLights()
+    public bool SwitchLights()
     {
         IsOn = !IsOn;
         on.SetActive(IsOn);
         off.SetActive(!IsOn);
+        return IsOn;
+    }
+
+    public bool TurnOff()
+    {
+        on.SetActive(false);
+        off.SetActive(true);
+        return false;
+    }
+    
+    public bool TurnOn()
+    {
+        on.SetActive(true);
+        off.SetActive(false);
+        return true;
     }
 }

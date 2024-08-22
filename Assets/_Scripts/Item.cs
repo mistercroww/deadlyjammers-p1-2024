@@ -19,4 +19,7 @@ public class Item : MonoBehaviour, IInteractable {
         PlayerController.instance.PickupItem(itemSO);
         Destroy(this.gameObject);
     }
+    public InteractableType InteractionType() {
+        return InteractableType.Item;
+    }
 }
